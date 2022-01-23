@@ -1,8 +1,16 @@
 # QA
 
-1. = copy.copy() copy.deepcopy() detech() clone()区别。
+1. 数值稀疏的影响
 
-    1.1 = copy deepcopy区别
+    答：用稀疏矩阵存储即可。
+
+2. 为什么深度学习用张量表示
+
+    答：统计学家的数学的计算机表示
+
+3. = copy.copy() copy.deepcopy() detech() clone()区别。
+
+    3.1 = copy deepcopy区别
     > [= copy deepcopy区别](https://blog.csdn.net/u011630575/article/details/78604226?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&utm_relevant_index=9)  
 
     > 首先直接上结论：  
@@ -18,7 +26,19 @@
     对于简单的 object，例如不可变对象（数值，字符串，元组），用 shallow copy 和 deep copy 没区别  
     复杂的 object， 如 list 中套着 list 的情况，shallow copy 中的 子list，并未从原 object 真的「独立」出来。也就是说，如果你改变原 object 的子 list 中的一个元素，你的 copy 就会跟着一起变。这跟我们直觉上对「复制」的理解不同。
 
-    1.2 detch clone
+    3.2 detch clone
     > detach()操作后的tensor与原始tensor共享数据内存，当原始tensor在计算图中数值发生反向传播等更新之后，detach()的tensor值也发生了改变。detach()函数可以返回一个完全相同的tensor,与旧的tensor共享内存，脱离计算图，不会牵扯梯度计算。
 
     > 返回一个和源张量同shape、dtype和device的张量，与源张量不共享数据内存，但提供梯度的回溯。
+
+4. 对哪一维求和就是消除哪一维
+
+5. torch不区分行向量和列向量吗？
+   ![row column](pictures/rowColumn.png)
+
+6. sum(axis=[0,1])怎么求？
+    
+    答：先按第0维求和，再按第1维求和。
+
+7. torch中L1，L2正则化项的加入
+
